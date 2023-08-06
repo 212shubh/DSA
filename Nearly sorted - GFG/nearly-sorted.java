@@ -36,11 +36,24 @@ class Solution
     //Function to return the sorted array.
     ArrayList <Integer> nearlySorted(int arr[], int num, int k)
     {
-        // your code here
-        Arrays.sort(arr);
-        ArrayList<Integer>al = new ArrayList<>();
-        for(int i=0;i<arr.length;i++)
-          al.add(arr[i]);
+       PriorityQueue<Integer>mh = new PriorityQueue<>();
+       ArrayList<Integer>al = new ArrayList<>();
+       for(int i=0;i<arr.length;i++)
+       {
+           if(mh.size()<k)
+                  mh.offer(arr[i]);
+                  
+              
+            else
+            {
+                mh.offer(arr[i]);
+              al.add(mh.poll());
+              
+            }
+            
+       }
+       while(!mh.isEmpty())
+         al.add(mh.poll());
           return al;
     }
 }
