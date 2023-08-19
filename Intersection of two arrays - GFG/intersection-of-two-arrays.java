@@ -47,8 +47,6 @@ class GFG {
 // } Driver Code Ends
 
 
-
-
 // User function Template for Java
 
 class Solution {
@@ -56,21 +54,31 @@ class Solution {
     // the intersection of two arrays.
     public static int NumberofElementsInIntersection(int a[], int b[], int n, int m) {
         // Your code here
-        HashSet<Integer> h = new HashSet<>();
-        for(int i=0;i<n;i++)
+        int i=0,j=0,count=0;
+        Arrays.sort(a);
+        Arrays.sort(b);
+        while(i<n && j<m)
         {
-            h.add(a[i]);
+            if(i>0 && a[i]==a[i-1])
+            {
+                i++;
+                continue;
+            }
+            
+            if(a[i]<b[j])
+            {
+                i++;
+            }
+             else if(a[i]>b[j])
+                 j++;
+            else
+            {
+                count++;
+                i++;
+                j++;
+                
+            }     
         }
-        int res=0;
-        for(int i=0;i<m;i++)
-        {
-            if(h.contains(b[i]))
-              {
-                  res++;
-                  h.remove(b[i]);
-              }
-        }
-        return res;
-        
+        return count;
     }
 };
