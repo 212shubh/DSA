@@ -36,20 +36,19 @@ class GfG
 
 class Solution
 {
-    public long findMinDiff (ArrayList<Integer> arr, int n, int m)
+    public long findMinDiff (ArrayList<Integer> a, int n, int m)
     {
         // your code here
-        Collections.sort(arr);
-        int min =Integer.MAX_VALUE;
-        int j= m-1;
-        int i=0;
-        while(j<n)
+        Collections.sort(a);
+        int end = m-1;
+        int min = Integer.MAX_VALUE;
+        for(int i= 0;end<n;i++)
         {
-            
-          min = Math.abs(Math.min(min , arr.get(j)-arr.get(i)));
-          i++;
-          j++;
+            int diff = a.get(m-1+i)-a.get(i);
+           min = Math.min(diff,min);
+           end++;
         }
-        return min;
+        
+        return (long)min;
     }
 }
