@@ -71,27 +71,30 @@ class Solution {
     public static ArrayList<Integer> maxMeetings(int n, int[] start, int[] end) {
         // code here
         ArrayList<pair> al = new ArrayList<>();
+        //adding elements in the al
         for(int i=0;i<n;i++)
         {
             al.add(new pair(start[i],end[i],(i+1)));
         }
+        //sort the elements based on endpoints
         Collections.sort(al,(first,second)->(first.b - second.b));
-        
+        //store the first end point
         pair p1 = al.get(0);
         int ep = p1.b;
        // System.out.println("endpoint= "+ep);
         
         ArrayList<Integer> ans = new ArrayList<>();
-        ans.add(p1.c);
+        ans.add(p1.c);//store the first position
        for(int i=1;i<n;i++)
        {
            pair p = al.get(i);
            //System.out.println(p.a+","+p.b+","+p.c);
-           if(p.a<=ep)
+           if(p.a<=ep) //if starting point of next meeting is less than 
+           //end point of previous meeting then we cant schedule it;
            {
                continue;
            }
-           else if(p.a>ep)
+           else if(p.a>ep)//schedule a meeting and record the position
            {
                ans.add(p.c);
                ep = p.b;
@@ -99,7 +102,7 @@ class Solution {
        }
        
        //ans.add(1);
-       Collections.sort(ans);
+       Collections.sort(ans);//sort the position;
        return ans;
     }
 }
