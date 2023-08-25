@@ -28,25 +28,27 @@ public class GFG {
 // } Driver Code Ends
 
 
+
+
 //User function Template for Java
 
 class Solution {
     int getPairsCount(int[] arr, int n, int k) {
         // code here
-        HashMap<Integer,Integer>map = new HashMap<>();
+        HashMap<Integer,Integer> map = new HashMap<>();
         int count=0;
         for(int i=0;i<n;i++)
         {
             if(map.containsKey(k-arr[i]))
-              count+=map.get(k-arr[i]);
+               count+=map.get(k-arr[i]);
             if(map.containsKey(arr[i]))
-              {
-                  int a = map.get(arr[i]);
-                  map.put(arr[i],a+1);
-              }
-              else
-                map.put(arr[i],1);
-              
+               {
+                   int a = map.get(arr[i]);
+                   map.put(arr[i],a+1);
+                   
+               }
+               else
+                 map.put(arr[i],1);
         }
         return count;
     }
