@@ -54,30 +54,20 @@ class Solution {
     // the intersection of two arrays.
     public static int NumberofElementsInIntersection(int a[], int b[], int n, int m) {
         // Your code here
-        int i=0,j=0,count=0;
-        Arrays.sort(a);
-        Arrays.sort(b);
-        while(i<n && j<m)
+        HashSet<Integer> set = new HashSet<>();
+        
+        for(int i=0;i<n;i++)
         {
-            if(i>0 && a[i]==a[i-1])
-            {
-                i++;
-                continue;
-            }
-            
-            if(a[i]<b[j])
-            {
-                i++;
-            }
-             else if(a[i]>b[j])
-                 j++;
-            else
-            {
-                count++;
-                i++;
-                j++;
-                
-            }     
+            set.add(a[i]);
+        }
+        int count=0;
+        for(int i=0;i<m;i++)
+        {
+            if(set.contains(b[i]))
+              {
+                  count++;
+                  set.remove(b[i]);
+           }
         }
         return count;
     }
