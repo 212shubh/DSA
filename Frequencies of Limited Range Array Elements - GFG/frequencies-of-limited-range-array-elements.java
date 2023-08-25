@@ -43,17 +43,18 @@ class Solution{
     //Function to count the frequency of all elements from 1 to N in the array.
     public static void frequencyCount(int arr[], int N, int P)
     {
-        //Decreasing all elements by 1 so that the elements
-        //become in range from 0 to n-1.
-        int maxi = Math.max(P,N);
-        int count[] = new int[maxi+1];
-        Arrays.fill(count, 0);
-        for(int i=0;i<N;i++){
-            count[arr[i]]++; 
-        }
+        // code here
+        int max = Math.max(N,P);
+        int count[] = new int[max+1];
         
-        for(int i=0;i<N;i++){
+        for(int i=0;i<N;i++)
+        {
+            count[arr[i]]++;
+        }
+        for(int i=0;i<N;i++)
+        {
             arr[i] = count[i+1];
         }
+        
     }
 }
