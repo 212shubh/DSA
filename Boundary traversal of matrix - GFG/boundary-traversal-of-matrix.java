@@ -38,51 +38,35 @@ class GFG
 // } Driver Code Ends
 
 
+
+
 //User function Template for Java
 
 class Solution
 {
     //Function to return list of integers that form the boundary 
     //traversal of the matrix in a clockwise manner.
-    static ArrayList<Integer> boundaryTraversal(int mat[][], int rsize, int csize)
+    static ArrayList<Integer> boundaryTraversal(int matrix[][], int r, int c)
     {
         // code here 
-        //int up [] = new int[csize];
-        ArrayList<Integer>right= new ArrayList<>();
-        ArrayList<Integer> bottom = new ArrayList<>();
-        ArrayList<Integer>left = new ArrayList<>();
-        ArrayList<Integer> ans  = new ArrayList<>();
+        ArrayList<Integer>al = new ArrayList<>();
+        //corner case when there is only one row
         
-        for(int i=0;i<rsize;i++)
-        {
-            for(int j=0;j<csize;j++)
-            {
-                if(i==0)
-                {
-                     ans.add(mat[i][j]);
-                }
-                else if(i>0 && j==csize-1)
-                {
-                   right.add(mat[i][j]);  
-                }
-                else if(i==rsize-1 && j<csize-1)
-                {
-                    bottom.add(mat[i][j]);
-                }
-                else if(i>0 && j==0)
-                {
-                    left.add(mat[i][j]);
-                }
-            }
-        }
-        
-        Collections.reverse(bottom);
-        Collections.reverse(left);
-        
-        ans.addAll(right);
-        ans.addAll(bottom);
-        ans.addAll(left);
-        return ans;
-        
+                //first row
+                for(int i=0;i<c;i++)
+                al.add(matrix[0][i]);
+                //last column
+                if(r>1)
+                for(int i=1;i<r;i++)
+                  al.add(matrix[i][c-1]);
+                //last row
+                if(r>1)
+                for(int i=c-2;i>=0;i--)
+                  al.add(matrix[r-1][i]);
+                //first column
+                if(c>1)
+                for(int i=r-2;i>=1;i--)
+                  al.add(matrix[i][0]);
+         return al;
     }
 }
