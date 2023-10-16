@@ -21,8 +21,6 @@ class GfG
 // } Driver Code Ends
 
 
-
-
 //User function Template for Java
 
 class Solution
@@ -30,28 +28,28 @@ class Solution
     String UncommonChars(String A, String B)
     {
         // code here
-        int c1 [] = new int[26];
-        int c2 [] = new int[26];
-        for(int i =0; i<A.length();i++)
+        int c1[] = new int[26];
+        int c2[] = new int[26];
+        
+        for(int i=0;i<A.length();i++)
         {
             c1[A.charAt(i)-'a']++;
         }
-        for(int i =0; i<B.length();i++)
+        for(int i=0;i<B.length();i++)
         {
             c2[B.charAt(i)-'a']++;
         }
         StringBuilder sb = new StringBuilder();
         for(int i=0;i<26;i++)
         {
-            if((c1[i]==0&&c2[i]!=0)||( c1[i]!=0 &&c2[i]==0))
-              {
-                  sb.append((char)('a'+i));
-              }
+            if((c1[i]==0&& c2[i]!=0) || (c1[i]!=0 &&c2[i]==0))
+            {
+                sb.append((char)('a'+i));
+            }
         }
         if(sb.length()==0)
            return "-1";
-        else
-           return sb.toString();
-      //  return (sb.length()==0) ? "-1" : sb.toString();
+        
+        return sb.toString();
     }
 }
