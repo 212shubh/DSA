@@ -40,26 +40,16 @@ class GFG {
 
 
 
-
-
 class Solution
 {
     //Function to check if two strings are rotations of each other or not.
     public static boolean areRotations(String s1, String s2 )
     {
         // Your code here
-        // here the logic is that if a string concatenated itself twice 
-        // it contais all its rotation itself
-        
-        if(s1.length()!=s2.length())
-        {
-            return false;
-        }
-        String con = s1+s1;
-        
-        return(con.contains(s2));
-          
-           
+        if(s1.length() != s2.length())
+          return false;
+        String s3 = s1+s1;
+        return s3.contains(s2);
            
     }
     
