@@ -31,8 +31,6 @@ class Main {
 // } Driver Code Ends
 
 
-
-
 class Solution{
 
     // arr: input array
@@ -41,17 +39,19 @@ class Solution{
     long maxSubarraySum(int arr[], int n){
         
         // Your code here
-        long max = Long.MIN_VALUE; 
-        long sum =0;
+        long max = Integer.MIN_VALUE;
+        long curr=0;
         for(int i=0;i<n;i++)
         {
-            sum =sum+arr[i];
-            max = Math.max(max,sum);
-            //important thing is 
-            if(sum<0)
-             sum=0;
+            curr+=arr[i];
+            if(curr>max)
+                max=curr;
+              if(curr<0)
+               curr=0;
+             
         }
         return max;
+        
     }
     
 }
