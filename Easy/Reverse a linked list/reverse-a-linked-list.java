@@ -71,17 +71,19 @@ class Solution
     Node reverseList(Node head)
     {
         // code here
-        Node prev  =null;
+        if(head==null)
+          return head;
         Node curr = head;
+        Node prev = null;
         Node next;
         
         while(curr!=null)
         {
             next = curr.next;
-            curr.next=prev;
+            curr.next = prev;
             
-            prev= curr;
-            curr = next;
+            prev = curr;
+            curr= next;
         }
         return prev;
     }
